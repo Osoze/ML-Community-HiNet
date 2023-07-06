@@ -35,4 +35,26 @@ const ChartCard = ({
               {children}
             </div>
           </div>
-       
+        )
+      }
+      {
+        footer && (
+          <div className={classNames(styles.footer, { [styles.footerMargin]: !children })}>
+            {footer}
+          </div>
+        )
+      }
+    </div>
+  );
+
+  return (
+    <Card
+      bodyStyle={{ padding: '20px 24px 8px 24px' }}
+      {...rest}
+    >
+      {<Spin spinning={loading} wrapperClassName={styles.spin}>{content}</Spin>}
+    </Card>
+  );
+};
+
+export default ChartCard;
