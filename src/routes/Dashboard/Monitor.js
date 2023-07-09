@@ -66,4 +66,95 @@ export default class Monitor extends PureComponent {
           <Col xl={6} lg={24} md={24} sm={24} xs={24}>
             <Card title="活动情况预测" style={{ marginBottom: 24 }} bordered={false}>
               <ActiveChart />
-       
+            </Card>
+            <Card
+              title="券核效率"
+              style={{ marginBottom: 24 }}
+              bodyStyle={{ textAlign: 'center' }}
+              bordered={false}
+            >
+              <Gauge
+                format={(val) => {
+                  switch (parseInt(val, 10)) {
+                    case 20:
+                      return '差';
+                    case 40:
+                      return '中';
+                    case 60:
+                      return '良';
+                    case 80:
+                      return '优';
+                    default:
+                      return '';
+                  }
+                }}
+                title="跳出率"
+                height={180}
+                percent={87}
+              />
+            </Card>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col xl={12} lg={24} sm={24} xs={24}>
+            <Card
+              title="各品类占比"
+              style={{ marginBottom: 24 }}
+              bordered={false}
+              className={styles.pieCard}
+            >
+              <Row style={{ padding: '16px 0' }}>
+                <Col span={8}>
+                  <Pie
+                    animate={false}
+                    percent={28}
+                    subTitle="中式快餐"
+                    total="28%"
+                    height={128}
+                    lineWidth={2}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Pie
+                    animate={false}
+                    color="#5DDECF"
+                    percent={22}
+                    subTitle="西餐"
+                    total="22%"
+                    height={128}
+                    lineWidth={2}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Pie
+                    animate={false}
+                    color="#2FC25B"
+                    percent={32}
+                    subTitle="火锅"
+                    total="32%"
+                    height={128}
+                    lineWidth={2}
+                  />
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+          <Col xl={6} lg={12} sm={24} xs={24} style={{ marginBottom: 24 }}>
+            <Card title="热门搜索" bordered={false}>
+              <TagCloud data={tags} height={161} />
+            </Card>
+          </Col>
+          <Col xl={6} lg={12} sm={24} xs={24} style={{ marginBottom: 24 }}>
+            <Card
+              title="资源剩余"
+              bodyStyle={{ textAlign: 'center', fontSize: 0 }}
+              bordered={false}
+            >
+              <WaterWave height={161} title="补贴资金剩余" percent={34} />
+            </Card>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
