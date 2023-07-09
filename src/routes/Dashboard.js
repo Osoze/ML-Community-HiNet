@@ -63,4 +63,38 @@ class Dashboard extends PureComponent {
             </Card>
           </Col>
         </Row>
-    
+        <Row gutter={24} style={{ marginTop: 24 }}>
+          <Col span={12}>
+            <Card bordered={false}>
+              <p>卡片内容</p>
+              <p>卡片内容</p>
+              <p>卡片内容</p>
+            </Card>
+          </Col>
+          <Col span={12}>
+            <Card bordered={false}>
+              <p>卡片内容</p>
+              <p>卡片内容</p>
+              <p>卡片内容</p>
+            </Card>
+          </Col>
+        </Row>
+        <Row gutter={24} style={{ marginTop: 24 }}>
+          <Col span={24}>
+            <Card
+              title="业务表格"
+              bordered={false}
+              extra={<Icon type="setting" />}
+            >
+              <Table dataSource={list} loading={loading} columns={columns} />
+            </Card>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
+
+export default connect(state => ({
+  user: state.user,
+}))(Dashboard);
