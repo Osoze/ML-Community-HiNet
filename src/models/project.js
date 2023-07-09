@@ -1,22 +1,23 @@
-import { queryActivities } from '../services/api';
+
+import { queryProjectNotice } from '../services/api';
 
 export default {
-  namespace: 'activities',
+  namespace: 'project',
 
   state: {
-    list: [],
+    notice: [],
     loading: true,
   },
 
   effects: {
-    *fetchList(_, { call, put }) {
+    *fetchNotice(_, { call, put }) {
       yield put({
         type: 'changeLoading',
         payload: true,
       });
-      const response = yield call(queryActivities);
+      const response = yield call(queryProjectNotice);
       yield put({
-        type: 'saveList',
+        type: 'saveNotice',
         payload: Array.isArray(response) ? response : [],
       });
       yield put({
@@ -27,10 +28,10 @@ export default {
   },
 
   reducers: {
-    saveList(state, action) {
+    saveNotice(state, action) {
       return {
         ...state,
-        list: action.payload,
+        notice: action.payload,
       };
     },
     changeLoading(state, action) {
