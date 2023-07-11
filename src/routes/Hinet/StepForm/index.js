@@ -81,4 +81,12 @@ export default class StepForm extends PureComponent {
                   />
                 ))
               }
-              <Redirect exact from="/model/:id" to={`/mod
+              <Redirect exact from="/model/:id" to={`/model/${this.props.match.params.id}/result`} />
+              <Route render={NotFound}/>
+            </Switch>
+          </div>
+        </Card>
+      </PageHeaderLayout>
+    );
+  }
+}
